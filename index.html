@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/2b9cdc1c9a.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .container{
+            display: flex;
+            justify-content: right;
+        }
+        .nav{
+            width: 50%;
+            display: flex;
+            justify-content: space-around;
+        }
+        i{
+            visibility: hidden;
+        }
+        .nav>div{
+            border: 1px solid black;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        @media (max-width:768px){
+            .container{
+                justify-content: left;
+            }
+            .nav{
+                flex-direction: column;
+                gap: 20px;
+                height: 100%;
+                width: 40%;
+                background-color:cyan;
+                padding: 10px;
+                position: relative;
+                left: -100%;
+                transition: 0.9s;
+            }
+            .nav>div{
+                color: black;
+                background-color: rgb(29, 43, 46);
+                transition: 0.5s;
+                color: white;
+                border:none;
+            }
+            .nav>div:hover{
+                background-color: crimson;
+                cursor: pointer;
+            }
+            i{
+                visibility: visible;
+                font-size: 2rem;
+                cursor: pointer;
+                color: rgb(29, 43, 46);
+            }
+            .active{
+                left: -5%;
+                transition: 0.9s;
+            }
+            .floatbar{
+                position: relative;
+                left: 300px;
+                transition: 0.9s;
+                transform: rotate(350deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div><i class="fa-solid fa-bars"></i></div>
+        <div class="nav">
+            <div>How it works</div>
+            <div>What you get</div>
+            <div>Contact us</div>
+            <div>Log in</div>
+        </div>
+    </div>
+    <script>
+        const bar=document.querySelector('.fa-bars');
+        console.log(bar);
+        const nav=document.querySelector('.nav');
+        console.log(nav);
+        bar.addEventListener('click',()=>{
+            nav.classList.toggle('active');
+            bar.classList.toggle('floatbar');
+            if(bar.classList.contains('fa-bars')){
+                bar.classList.remove('fa-bars');
+                bar.classList.add('fa-circle-xmark');
+            }
+            else{
+                bar.classList.remove('fa-circle-xmark');
+                bar.classList.add('fa-bars');
+            }
+        });
+    </script>
+</body>
+</html>
